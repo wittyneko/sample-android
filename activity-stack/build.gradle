@@ -16,16 +16,6 @@ android {
 
     }
 
-    //添加签名文件
-    signingConfigs {
-        sample {
-            storeFile file('../sample.jks')
-            storePassword "samp1e"
-            keyAlias "sample"
-            keyPassword "samp1e"
-        }
-    }
-
     productFlavors {
         dev {
             minSdkVersion 21
@@ -33,6 +23,20 @@ android {
 
         rel {
             minSdkVersion 15
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    //添加签名文件
+    signingConfigs {
+        sample {
+            storeFile file('../sample.jks')
+            storePassword "samp1e"
+            keyAlias "sample"
+            keyPassword "samp1e"
         }
     }
 
@@ -48,10 +52,6 @@ android {
             signingConfig signingConfigs.sample
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
     }
 }
 
